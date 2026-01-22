@@ -11,18 +11,9 @@ import Maze from "../components/maze.astro";
 		<meta name="generator" content={Astro.generator} />
 		<title>Astro</title>
 	</head>
-	<body>
-		<!-- <Maze /> -->
-		<h1>WELCOME</h1>
-		<button class="startbtn">Start</button>
-
-		<script>
-import { navigate } from "astro:transitions/client"
-
-			document.querySelector('.startbtn')?.addEventListener('click', () => {
-				navigate('/maze');
-			})
-		</script>
-		<!-- <script src="../scripts/maze.js"></script> -->
+	<body class="body">
+		<Maze />
+		 <!-- <h1>WELCOME</h1> -->
+		<script src="../scripts/maze.js"></script>
 	</body>
 </html>
