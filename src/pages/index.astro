@@ -1,6 +1,6 @@
 ---
 import "../styles/global.css";
-import Maze from "../components/maze.astro";
+import MazeHard from "../components/mazeHard.astro";
 import StartButton from "../components/startButton.astro";
 ---
 
@@ -10,10 +10,9 @@ import StartButton from "../components/startButton.astro";
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="viewport" content="width=device-width" />
 		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
+		<title>Borked Cat Maze - Home</title>
 	</head>
 	<body class="bg-rose-200">
-		<!-- <Maze /> -->
 		<h1 class="font-ManlineSlabs text-9xl flex justify-center mt-20 ml-20 mr-20 text-rose-400 text-shadow-md text-shadow-rose-500">WELCOME</h1>
 		<h2 class="font-ManlineSlabs text-6xl flex justify-center text-rose-400">to the maze</h2>
 		<StartButton />
@@ -22,7 +21,7 @@ import StartButton from "../components/startButton.astro";
 			import { navigate } from "astro:transitions/client"
 
 			document.querySelector('.startbtn')?.addEventListener('click', () => {
-				navigate('/maze');
+				navigate('/levelSelect');
 			})
 		</script>
 		<!-- <script src="../scripts/maze.js"></script> -->

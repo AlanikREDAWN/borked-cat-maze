@@ -1,17 +1,20 @@
-let maze = document.querySelector('.maze');
+let mazeMedium = document.querySelector('.mazeMedium');
 let body = document.querySelector('.body');
-let ctx = maze.getContext('2d');
+let ctx = mazeHard.getContext('2d');
 
 let player;
 let playerX = 0;
 let playerY = 0;
 const playerSize = 32;
+let winCellRow;
+let winCellCol;
+
 
 let current;
 
 let canMove = false;
 
-class Maze {
+class MazeMedium {
     constructor(size, rows, columns) {
         this.size = size;
         this.rows = rows;
@@ -33,9 +36,9 @@ class Maze {
     }
 
     draw() {
-        maze.width = this.size;
-        maze.height = this.size;
-        maze.style.background = "black";
+        mazeMedium.width = this.size;
+        mazeMedium.height = this.size;
+        mazeMedium.style.background = "black";
         current.visited = true;
 
         for (let r = 0; r < this.rows; r++) {
@@ -78,6 +81,11 @@ class Maze {
                 this.size / this.columns - 2,
                 this.size / this.rows - 2
             );
+            winCellCol = exitCell.colNum * this.size / this.columns + 1
+            winCellRow = exitCell.rowNum * this.size / this.rows + 1
+            // exitCell.colNum = winCellCol;
+            // exitCell.rowNum = winCellRow;
+            console.log(winCellCol)
 
             spawnPlayer(playerX, playerY);
             return;
@@ -215,9 +223,9 @@ class Cell {
     }
 }
 
-let newMaze = new Maze(640, 20, 20);
-newMaze.setup()
-newMaze.draw()
+let newMazeMedium = new MazeMedium(320, 10, 10);
+newMazeMedium.setup()
+newMazeMedium.draw()
 
 document.addEventListener("keydown", handleKey);
 
@@ -324,6 +332,9 @@ function movePlayer(direction) {
         playerY = nextY;
         player.style.left = `${playerX}px`;
         player.style.top = `${playerY}px`;
+        if (playerX === winCellRow && playerY === winCellCol) {
+            console.log("win")
+        }
     }
     // console.log("trying to move", direction);
     // let nextX = playerX;
@@ -417,6 +428,9 @@ function spawnPlayer(x, y) {
     player.style.zIndex = 1;
 
     body.appendChild(player);
+    // if (x === winCellRow && y === winCellCol) {
+    //     console.log("win")
+    // }
 }
 
 function isCollision(x, y) {
@@ -446,9 +460,9 @@ function isTileBlocked(tileX, tileY, direction) {
     const col = tileX / TILE;
     const row = tileY / TILE;
 
-    if (row < 0 || row >= newMaze.rows || col < 0 || col >= newMaze.columns) return true;
+    if (row < 0 || row >= newMazeMedium.rows || col < 0 || col >= newMazeMedium.columns) return true;
 
-    const cell = newMaze.grid[row][col];
+    const cell = newMazeMedium.grid[row][col];
 
     switch (direction) {
         case "up":
@@ -461,46 +475,7 @@ function isTileBlocked(tileX, tileY, direction) {
             return cell.walls.leftWall;
     }
     return true;
-    // const rect = maze.getBoundingClientRect();
-
-    // const startX = Math.floor(tileX - rect.left + 4);
-    // const startY = Math.floor(tileY - rect.top + 4);
-    // const width = TILE - 8;
-    // const height = TILE - 8;
-    // // const endX = startX + TILE - 8;
-    // // const endY = startY + TILE - 8;
-
-    // if (
-    //     startX < 0 || startY < 0 ||
-    //     startX + width >= maze.width || 
-    //     startY + height >= maze.height
-    // ) {
-    //     return true;
-    // }
-
-    // const data = ctx.getImageData(startX, startY, width, height).data;
-
-    // for (let i = 0; i < data.length; i += 4) {
-    //     const r = data[i];
-    //     const g = data[i + 1];
-    //     const b = data[i + 2];
-
-    //     if (r < 20 && g < 20 && b < 20) {
-    //         return false;
-    //     }
-    // }
-    // return true;
-
-    // // if (cx < 0 || cy < 0 || cx >= maze.width || cy >= maze.height) {
-    // //     return true;
-    // // }
-    // // // ctx.fillStyle = "red";
-    // // // ctx.fillRect(cx, cy, 2, 2);
-    // // const imageData = ctx.getImageData(cx, cy, 1, 1);
-    // // const [r, g, b] = imageData.data;
-
-    // // const isPath = r > 240 && g > 240 && b > 240;
-    // // return !isPath;
+    
 }
 
 let wait = document.querySelector('.wait');

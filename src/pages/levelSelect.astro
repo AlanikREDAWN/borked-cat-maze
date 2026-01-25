@@ -1,0 +1,48 @@
+---
+import "../styles/global.css";
+import MazeHard from "../components/mazeHard.astro";
+import StartButton from "../components/startButton.astro";
+import BackButton from "../components/backButton.astro"
+import MazeEasyButton from "../components/mazeEasyButton.astro"
+import MazeMediumButton from "../components/mazeMediumButton.astro";
+import MazeHardButton from "../components/mazeHardButton.astro"
+import LevelBackButton from "../components/levelBackButton.astro"
+---
+
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="viewport" content="width=device-width" />
+		<meta name="generator" content={Astro.generator} />
+		<title>Borked Cat Maze - Level Select</title>
+	</head>
+	<body class="bg-rose-200">
+		<h1 class="font-ManlineSlabs text-9xl flex justify-center mt-20 ml-20 mr-20 text-rose-400 text-shadow-md text-shadow-rose-500">Pick a Difficulty</h1>
+        <MazeEasyButton />
+        <MazeMediumButton />
+        <MazeHardButton />
+		<LevelBackButton />
+
+		<script>
+			import { navigate } from "astro:transitions/client"
+
+			document.querySelector('.levelbackbtn')?.addEventListener('click', () => {
+				navigate('/');
+			})
+
+			document.querySelector('.mazeEasyButton')?.addEventListener('click', () => {
+				navigate('/mazeEasy');
+			})
+
+			document.querySelector('.mazeMediumButton')?.addEventListener('click', () => {
+				navigate('/mazeMedium');
+			})
+
+			document.querySelector('.mazeHardButton')?.addEventListener('click', () => {
+				navigate('/mazeHard');
+			})
+		</script>
+		<!-- <script src="../scripts/maze.js"></script> -->
+	</body>
+</html>
