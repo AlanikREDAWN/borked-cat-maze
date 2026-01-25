@@ -332,7 +332,8 @@ function movePlayer(direction) {
         playerY = nextY;
         player.style.left = `${playerX}px`;
         player.style.top = `${playerY}px`;
-        if (playerX === winCellRow && playerY === winCellCol) {
+
+        if (playerX == 608 && playerY == 608) {
             console.log("win")
         }
     }

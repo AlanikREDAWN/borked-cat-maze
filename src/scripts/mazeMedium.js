@@ -1,6 +1,6 @@
 let mazeMedium = document.querySelector('.mazeMedium');
 let body = document.querySelector('.body');
-let ctx = mazeHard.getContext('2d');
+let ctx = mazeMedium.getContext('2d');
 
 let player;
 let playerX = 0;
@@ -332,7 +332,8 @@ function movePlayer(direction) {
         playerY = nextY;
         player.style.left = `${playerX}px`;
         player.style.top = `${playerY}px`;
-        if (playerX === winCellRow && playerY === winCellCol) {
+
+        if (playerX == 288 && playerY == 288) {
             console.log("win")
         }
     }

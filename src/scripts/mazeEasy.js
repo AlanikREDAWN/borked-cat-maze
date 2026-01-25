@@ -320,9 +320,7 @@ function movePlayer(direction) {
     let nextX = playerX;
     let nextY = playerY;
 
-    if (nextX === winCellRow && nextY === winCellCol) {
-        console.log("win")
-    }
+
 
     switch (direction) {
         case 'up': nextY -= TILE; break;
@@ -336,6 +334,13 @@ function movePlayer(direction) {
         playerY = nextY;
         player.style.left = `${playerX}px`;
         player.style.top = `${playerY}px`;
+
+        // console.log("playerX", playerX)
+        // console.log("playerY", playerY)
+
+        if (playerX == 128 && playerY == 128) {
+            console.log("win")
+        }
 
     }
     // console.log("trying to move", direction);
