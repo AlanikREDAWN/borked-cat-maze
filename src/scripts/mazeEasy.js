@@ -421,7 +421,7 @@ function spawnPlayer(x, y) {
 
     player = document.createElement('img');
 
-    player.src = 'src/assets/images/cats.png';
+    player.src = '/cats.png';
     player.alt = "burger player";
     player.classList.add('player');
 
