@@ -15,6 +15,7 @@
 
 @theme {
     --animate-dotLoop: dotLoop 1.5s steps(1, end) infinite;
+    --font-ManlineSlabs: "ManlineSlabs", ui-sans-serif, system-ui;
 
     @keyframes dotLoop {
         0% {
@@ -40,4 +41,5 @@
     src: url('../assets/fonts/ManlineSlabs-pgPVy.otf') format('opentype');
     font-weight: normal;
     font-style: normal;
+    font-display: swap;
 }

@@ -2,20 +2,39 @@
 import "../styles/global.css";
 import Maze from "../components/maze.astro";
 import Wait from "../components/wait.astro";
+import BackButton from "../components/backButton.astro"
+import SmallScreenWarning from "../components/smallScreenWarning.astro"
 ---
 
 <html lang="en">
 	<head>
 		<meta charset="utf-8" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
+		<meta name="viewport" content="width=device-width" initial-scale=1.0 />
 		<meta name="generator" content={Astro.generator} />
 		<title>Astro</title>
 	</head>
-	<body class="body">
-		<Maze />
-		<Wait />
+	<body class="body bg-rose-200">
+		<SmallScreenWarning/>
+		<div class="gap-4 hidden lg:flex">
+			<div>
+				<Maze />
+				<Wait />
+			</div>
+			<div>
+				<BackButton />
+			</div>
+		</div>
+
+
 		 <!-- <h1>WELCOME</h1> -->
 		<script src="../scripts/maze.js"></script>
+		<script>
+			import { navigate } from "astro:transitions/client"
+
+			document.querySelector('.backbtn')?.addEventListener('click', () => {
+				navigate('/');
+			})
+		</script>
 	</body>
 </html>
