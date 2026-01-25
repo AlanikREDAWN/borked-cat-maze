@@ -12,3 +12,32 @@
 .maze {
     z-index: 0;
 }
+
+@theme {
+    --animate-dotLoop: dotLoop 1.5s steps(1, end) infinite;
+
+    @keyframes dotLoop {
+        0% {
+            content: "."
+        }
+        25% {
+            content: ".."
+        }
+        50% {
+            content: "..."
+        }
+        75% {
+            content: ""
+        }
+        100% {
+            content: "."
+        }
+    }
+}
+
+@font-face {
+    font-family: 'ManlineSlabs';
+    src: url('../assets/fonts/ManlineSlabs-pgPVy.otf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+}

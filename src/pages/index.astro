@@ -1,6 +1,7 @@
 ---
 import "../styles/global.css";
 import Maze from "../components/maze.astro";
+import StartButton from "../components/startButton.astro";
 ---
 
 <html lang="en">
@@ -14,10 +15,10 @@ import Maze from "../components/maze.astro";
 	<body>
 		<!-- <Maze /> -->
 		<h1>WELCOME</h1>
-		<button class="startbtn">Start</button>
+		<StartButton />
 
 		<script>
-import { navigate } from "astro:transitions/client"
+			import { navigate } from "astro:transitions/client"
 
 			document.querySelector('.startbtn')?.addEventListener('click', () => {
 				navigate('/maze');
