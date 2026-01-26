@@ -335,6 +335,12 @@ function movePlayer(direction) {
 
         if (playerX == 288 && playerY == 288) {
             console.log("win")
+            const winMessage = document.createElement('h1')
+            const leftDiv = document.querySelector('.leftDiv')
+            
+            winMessage.textContent = "You won! now get out"
+            winMessage.classList.add('p-20', 'font-ManlineSlabs', 'text-6xl', 'text-rose-500')
+            leftDiv.appendChild(winMessage)
         }
     }
     // console.log("trying to move", direction);
